@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Resmi & Publikasi — IKADI Kecamatan Prabumulih Barat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f4f7f5;
+      color: #0f291e;
+    }
+    .font-arabic {
+      font-family: 'Amiri', serif;
+    }
+    .islamic-pattern {
+      background-color: #063729;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(217, 160, 40, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.16) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 2px, transparent 2px, transparent 14px);
+    }
+    .gold-gradient {
+      background: linear-gradient(135deg, #d99b26 0%, #f3c65f 50%, #c58617 100%);
+    }
+    .card-hover {
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px -10px rgba(6, 55, 41, 0.14);
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .tab-active {
+      background-color: #064e3b;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(6, 78, 59, 0.25);
+    }
+    .tab-inactive {
+      background-color: #ffffff;
+      color: #1f3a2e;
+    }
+    .tab-inactive:hover {
+      background-color: #ecfdf5;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #e8f0ec; }
+    ::-webkit-scrollbar-thumb { background: #106b50; border-radius: 999px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Top Navigation / Header -->
+  <header class="sticky top-0 z-40 bg-emerald-950/95 backdrop-blur-md border-b border-emerald-800/70 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-3 py-3">
+        <!-- Brand & Official IKADI Logo -->
+        <div class="flex items-center gap-3.5">
+          <div id="headerLogoContainer" class="bg-white rounded-xl p-1.5 sm:px-2.5 sm:py-1.5 shadow-md border-2 border-amber-400/80 flex items-center justify-center shrink-0">
+            <!-- Official IKADI Vector Logo -->
+            <svg class="h-9 sm:h-11 w-auto" viewBox="0 0 360 175" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo IKADI">
+              <!-- Text IKATAN DA'I INDONESIA -->
+              <text x="65" y="36" fill="#111111" font-family="Arial Narrow, Plus Jakarta Sans, sans-serif" font-style="italic" font-weight="700" font-size="21" letter-spacing="0.4">IKATAN DA'I INDONESIA</text>
+              <!-- 8-Point Islamic Star (Rub el Hizb) -->
+              <g transform="translate(288, 28)">
+                <rect x="-15" y="-15" width="30" height="30" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+                <rect x="-15" y="-15" width="30" height="30" transform="rotate(45)" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+                <rect x="-10" y="-10" width="20" height="20" stroke="#F5B800" stroke-width="2.2" fill="none"/>
+                <rect x="-10" y="-10" width="20" height="20" transform="rotate(45)" stroke="#F5B800" stroke-width="2.2" fill="none"/>
+                <rect x="-5" y="-5" width="10" height="10" stroke="#F5B800" stroke-width="1.8" fill="none"/>
+                <rect x="-5" y="-5" width="10" height="10" transform="rotate(45)" stroke="#F5B800" stroke-width="1.8" fill="none"/>
+              </g>
+              <!-- Bold Serif Wordmark "Ikadi" -->
+              <text x="8" y="132" fill="#00923F" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="116" letter-spacing="-3">Ikadi</text>
+              <!-- Golden Crescent Swoosh -->
+              <path d="M52 135 C 145 182, 305 162, 336 86 C 344 68, 338 54, 325 48 C 348 64, 354 95, 334 126 C 296 182, 136 190, 52 135 Z" fill="#F5B800"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h1 id="navOrgName" class="text-base sm:text-lg font-extrabold tracking-tight text-white leading-tight">
+                IKADI Kecamatan Prabumulih Barat
+              </h1>
+              <span id="cloudStatusBadge" class="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-900/90 text-emerald-200 border border-emerald-700">
+                <span id="cloudStatusDot" class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                <span id="cloudStatusText">Menghubungkan Cloud...</span>
+              </span>
+            </div>
+            <p id="navOrgSub" class="text-xs text-emerald-200/90">
+              Ikatan Da'i Indonesia • Kota Prabumulih, Sumatera Selatan
+            </p>
+          </div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="openCloudSettingsModal()" title="Pengaturan Koneksi Database Online (Firebase)" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-900/80 hover:bg-emerald-800 text-emerald-100 border border-emerald-700/80 transition">
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+            <span class="hidden md:inline">Cloud Online</span>
+          </button>
+
+          <button onclick="openShareModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-emerald-950 shadow-md transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+            <span>Bagikan Web</span>
+          </button>
+
+          <!-- Guest Login Button -->
+          <button id="btnLoginHeader" onclick="openLoginModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition">
+            <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <span>Login Admin</span>
+          </button>
+
+          <!-- Logged-in Admin Controls -->
+          <div id="adminHeaderGroup" class="hidden items-center gap-2">
+            <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-200 border border-emerald-400/40">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span id="loggedAdminLabel">Admin</span>
+            </span>
+            <button onclick="logoutAdmin()" class="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold bg-rose-600/90 hover:bg-rose-500 text-white transition">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Quick Action Banner (Visible only when Admin is logged in) -->
+  <div id="adminControlBar" class="hidden bg-amber-50 border-b border-amber-200 text-emerald-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2 font-semibold">
+        <span class="px-2 py-0.5 rounded-md bg-emerald-800 text-white font-bold uppercase tracking-wider text-[10px]">Mode Pengurus Aktif</span>
+        <span>Perubahan data otomatis tersimpan & disinkronkan secara online.</span>
+      </div>
+      <div class="flex items-center gap-2 flex-wrap">
+        <button onclick="openEditProfileModal()" class="px-3 py-1.5 rounded-lg bg-white hover:bg-emerald-50 text-emerald-900 font-bold border border-emerald-200 shadow-sm transition">
+          ✏️ Ubah Profil, Logo & Visi Misi
+        </button>
+        <button onclick="jumpToSecuritySettings()" class="px-3 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white font-bold shadow-sm transition">
+          🔐 Ubah Username & Sandi Admin
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="islamic-pattern text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-amber-400/40 text-amber-300 text-xs font-bold tracking-wide">
+            <span>✦</span>
+            <span id="heroTagline">Merajut Ukhuwah, Menebar Dakwah Rahmatan Lil 'Alamin</span>
+          </div>
+          <h2 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+            Portal Resmi & Direktori Dakwah IKADI Kecamatan Prabumulih Barat
+          </h2>
+          <p id="heroDescription" class="text-sm sm:text-base text-emerald-100/90 max-w-2xl leading-relaxed">
+            Media informasi resmi pengurus, korps mubaligh/dai-daiyah, serta publikasi jadwal kajian dan kegiatan sosial keumatan di wilayah Kecamatan Prabumulih Barat, Kota Prabumulih.
+          </p>
+
+          <!-- Visi & Misi Box -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-amber-300 mb-1">Visi Organisasi</div>
+              <p id="heroVisi" class="text-xs sm:text-sm text-emerald-50 leading-relaxed">
+                Menjadi lembaga dakwah terdepan yang melahirkan para dai profesional, moderat, dan mencerahkan masyarakat Prabumulih Barat.
+              </p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-amber-300 mb-1">Misi Utama</div>
+              <p id="heroMisi" class="text-xs sm:text-sm text-emerald-50 leading-relaxed">
+                Mengokohkan pembinaan dai, memperluas syiar Islam yang sejuk di seluruh kelurahan, serta bersinergi membangun ketahanan keluarga dan umat.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button onclick="switchTab('anggota')" class="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-emerald-950 font-extrabold text-xs sm:text-sm shadow-lg transition">
+              Lihat Direktori Pengurus & Dai
+            </button>
+            <button onclick="switchTab('kegiatan')" class="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-white/25 transition">
+              Jadwal & Agenda Kegiatan
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Card: Official Emblem & Live Counters -->
+        <div class="lg:col-span-4">
+          <div class="bg-white text-emerald-950 rounded-3xl p-6 shadow-2xl border-2 border-amber-400/70">
+            <div id="heroLogoCard" class="flex flex-col items-center text-center pb-5 border-b border-emerald-100">
+              <svg class="h-20 w-auto mb-2" viewBox="0 0 360 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="65" y="36" fill="#111111" font-family="Arial Narrow, Plus Jakarta Sans, sans-serif" font-style="italic" font-weight="700" font-size="21" letter-spacing="0.4">IKATAN DA'I INDONESIA</text>
+                <g transform="translate(288, 28)">
+                  <rect x="-15" y="-15" width="30" height="30" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+                  <rect x="-15" y="-15" width="30" height="30" transform="rotate(45)" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+                  <rect x="-10" y="-10" width="20" height="20" stroke="#F5B800" stroke-width="2.2" fill="none"/>
+                  <rect x="-10" y="-10" width="20" height="20" transform="rotate(45)" stroke="#F5B800" stroke-width="2.2" fill="none"/>
+                  <rect x="-5" y="-5" width="10" height="10" stroke="#F5B800" stroke-width="1.8" fill="none"/>
+                  <rect x="-5" y="-5" width="10" height="10" transform="rotate(45)" stroke="#F5B800" stroke-width="1.8" fill="none"/>
+                </g>
+                <text x="8" y="132" fill="#00923F" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="116" letter-spacing="-3">Ikadi</text>
+                <path d="M52 135 C 145 182, 305 162, 336 86 C 344 68, 338 54, 325 48 C 348 64, 354 95, 334 126 C 296 182, 136 190, 52 135 Z" fill="#F5B800"/>
+              </svg>
+              <span class="text-xs font-bold uppercase tracking-widest text-emerald-800">Pengurus Cabang Kecamatan</span>
+              <span id="badgeRegionName" class="text-sm font-extrabold text-emerald-950">Prabumulih Barat • Kota Prabumulih</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-5 text-center">
+              <div class="bg-emerald-50 rounded-2xl p-3 border border-emerald-100">
+                <div id="statMembers" class="text-2xl font-extrabold text-emerald-800">0</div>
+                <div class="text-[11px] font-semibold text-emerald-700 mt-0.5">Pengurus & Dai</div>
+              </div>
+              <div class="bg-amber-50 rounded-2xl p-3 border border-amber-200/70">
+                <div id="statUpcoming" class="text-2xl font-extrabold text-amber-700">0</div>
+                <div class="text-[11px] font-semibold text-amber-800 mt-0.5">Akan Datang</div>
+              </div>
+              <div class="bg-emerald-50 rounded-2xl p-3 border border-emerald-100">
+                <div id="statDone" class="text-2xl font-extrabold text-emerald-800">0</div>
+                <div class="text-[11px] font-semibold text-emerald-700 mt-0.5">Terlaksana</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-7">
+      <div class="inline-flex flex-wrap gap-2 bg-white p-1.5 rounded-2xl shadow-sm border border-emerald-100">
+        <button id="tabBtn-anggota" onclick="switchTab('anggota')" class="tab-active px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-2">
+          <span>👥</span>
+          <span>Direktori Anggota & Dai</span>
+        </button>
+        <button id="tabBtn-kegiatan" onclick="switchTab('kegiatan')" class="tab-inactive px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-2">
+          <span>📅</span>
+          <span>Agenda & Dokumentasi Kegiatan</span>
+        </button>
+        <button id="tabBtn-admin" onclick="switchTab('admin')" class="hidden tab-inactive px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition items-center gap-2 border border-amber-300">
+          <span>⚙️</span>
+          <span>Panel Admin & Akun</span>
+        </button>
+      </div>
+
+      <div class="text-xs text-emerald-800/80 font-medium">
+        Terakhir diperbarui: <span id="lastUpdatedLabel" class="font-bold text-emerald-950">Hari ini</span>
+      </div>
+    </div>
+
+    <!-- TAB 1: DIREKTORI ANGGOTA -->
+    <section id="section-anggota" class="space-y-6">
+      <!-- Search & Filters -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-emerald-100 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-emerald-600 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input id="searchMemberInput" type="text" oninput="renderMembers()" placeholder="Cari nama dai/pengurus, jabatan, atau kelurahan binaan..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-emerald-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none text-sm" />
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <select id="filterDivisionSelect" onchange="renderMembers()" class="px-3.5 py-2.5 rounded-xl border border-emerald-200 text-xs sm:text-sm font-semibold text-emerald-900 bg-emerald-50/50 outline-none">
+            <option value="ALL">Semua Bidang / Divisi</option>
+            <option value="Pengurus Inti">Pengurus Inti</option>
+            <option value="Bidang Dakwah & Masjid">Bidang Dakwah & Masjid</option>
+            <option value="Bidang Kaderisasi & Pelatihan">Bidang Kaderisasi & Pelatihan</option>
+            <option value="Bidang Muslimah & Keluarga">Bidang Muslimah & Keluarga</option>
+            <option value="Bidang Sosial & Humas">Bidang Sosial & Humas</option>
+            <option value="Korps Mubaligh / Dai">Korps Mubaligh / Dai</option>
+          </select>
+          <select id="filterKelurahanSelect" onchange="renderMembers()" class="px-3.5 py-2.5 rounded-xl border border-emerald-200 text-xs sm:text-sm font-semibold text-emerald-900 bg-emerald-50/50 outline-none">
+            <option value="ALL">Semua Kelurahan Binaan</option>
+            <option value="Kel. Prabumulih">Kel. Prabumulih</option>
+            <option value="Kel. Pasar Prabumulih">Kel. Pasar Prabumulih</option>
+            <option value="Kel. Patih Galung">Kel. Patih Galung</option>
+            <option value="Kel. Gunung Kemala">Kel. Gunung Kemala</option>
+            <option value="Kel. Payuputat">Kel. Payuputat</option>
+            <option value="Kel. Tanjung Raman">Kel. Tanjung Raman</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Members Grid -->
+      <div id="membersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </section>
+
+    <!-- TAB 2: AGENDA & KEGIATAN -->
+    <section id="section-kegiatan" class="hidden space-y-6">
+      <!-- Filter Bar -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-emerald-100 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="relative flex-1">
+          <svg class="w-4 h-4 text-emerald-600 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input id="searchEventInput" type="text" oninput="renderEvents()" placeholder="Cari judul kajian, pemateri, atau lokasi masjid..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-emerald-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none text-sm" />
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <select id="filterEventStatus" onchange="renderEvents()" class="px-3.5 py-2.5 rounded-xl border border-emerald-200 text-xs sm:text-sm font-semibold text-emerald-900 bg-emerald-50/50 outline-none">
+            <option value="ALL">Semua Status Kegiatan</option>
+            <option value="Akan Datang">Akan Datang</option>
+            <option value="Terlaksana">Terlaksana</option>
+          </select>
+          <select id="filterEventCategory" onchange="renderEvents()" class="px-3.5 py-2.5 rounded-xl border border-emerald-200 text-xs sm:text-sm font-semibold text-emerald-900 bg-emerald-50/50 outline-none">
+            <option value="ALL">Semua Kategori</option>
+            <option value="Kajian Rutin">Kajian Rutin</option>
+            <option value="Safari Dakwah">Safari Dakwah</option>
+            <option value="Pelatihan Dai">Pelatihan Dai</option>
+            <option value="Bakti Sosial">Bakti Sosial</option>
+            <option value="Rapat Kerja">Rapat Kerja</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- TAB 3: PANEL ADMIN & KEAMANAN AKUN (Only visible when logged in) -->
+    <section id="section-admin" class="hidden space-y-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Form 1: Tambah Pengurus / Dai -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100">
+          <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-emerald-100">
+            <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">👤</span>
+            <div>
+              <h3 class="font-extrabold text-emerald-950 text-base">Tambah Pengurus / Dai Baru</h3>
+              <p class="text-xs text-emerald-700">Publikasikan profil pengurus beserta foto ke direktori</p>
+            </div>
+          </div>
+
+          <form id="addMemberForm" onsubmit="handleAddMember(event)" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Nama Lengkap & Gelar *</label>
+              <input type="text" id="mName" required placeholder="Contoh: Ust. H. Ahmad Fauzi, Lc., M.Pd.I" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Jabatan / Amanah *</label>
+                <input type="text" id="mRole" required placeholder="Contoh: Ketua Cabang / Dai" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Bidang / Divisi *</label>
+                <select id="mDivision" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600 bg-white">
+                  <option value="Pengurus Inti">Pengurus Inti</option>
+                  <option value="Bidang Dakwah & Masjid">Bidang Dakwah & Masjid</option>
+                  <option value="Bidang Kaderisasi & Pelatihan">Bidang Kaderisasi & Pelatihan</option>
+                  <option value="Bidang Muslimah & Keluarga">Bidang Muslimah & Keluarga</option>
+                  <option value="Bidang Sosial & Humas">Bidang Sosial & Humas</option>
+                  <option value="Korps Mubaligh / Dai">Korps Mubaligh / Dai</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Kelurahan Binaan *</label>
+                <select id="mKelurahan" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600 bg-white">
+                  <option value="Kel. Prabumulih">Kel. Prabumulih</option>
+                  <option value="Kel. Pasar Prabumulih">Kel. Pasar Prabumulih</option>
+                  <option value="Kel. Patih Galung">Kel. Patih Galung</option>
+                  <option value="Kel. Gunung Kemala">Kel. Gunung Kemala</option>
+                  <option value="Kel. Payuputat">Kel. Payuputat</option>
+                  <option value="Kel. Tanjung Raman">Kel. Tanjung Raman</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">No. HP / WhatsApp (Opsional)</label>
+                <input type="text" id="mPhone" placeholder="0812-xxxx-xxxx" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Keahlian / Fokus Dakwah</label>
+              <input type="text" id="mSpecialty" placeholder="Contoh: Fiqih Ibadah, Khutbah Jumat, Pembinaan Remaja" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <!-- Photo Upload -->
+            <div class="bg-emerald-50/70 p-3 rounded-2xl border border-dashed border-emerald-300">
+              <label class="block text-xs font-bold text-emerald-900 mb-1.5">Unggah Foto Profil Anggota (Otomatis Dikompresi)</label>
+              <div class="flex items-center gap-3">
+                <img id="mPhotoPreview" src="" alt="Preview" class="hidden w-14 h-14 rounded-full object-cover border-2 border-emerald-600 shadow-sm" />
+                <div class="flex-1">
+                  <input type="file" id="mPhotoInput" accept="image/*" onchange="previewCompressedImage(this, 'mPhotoPreview', 'mPhotoData', 320, 320)" class="text-xs text-emerald-900 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-emerald-700 file:text-white hover:file:bg-emerald-600 cursor-pointer" />
+                  <input type="hidden" id="mPhotoData" />
+                </div>
+                <button type="button" onclick="clearImageField('mPhotoInput', 'mPhotoPreview', 'mPhotoData')" class="text-xs text-rose-600 font-bold hover:underline">Hapus</button>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition">
+              + Simpan & Publikasikan Anggota
+            </button>
+          </form>
+        </div>
+
+        <!-- Form 2: Tambah Agenda / Kegiatan -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100">
+          <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-emerald-100">
+            <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">📢</span>
+            <div>
+              <h3 class="font-extrabold text-emerald-950 text-base">Publikasikan Agenda / Kegiatan</h3>
+              <p class="text-xs text-emerald-700">Terbitkan jadwal dakwah atau dokumentasi acara lengkap dengan foto</p>
+            </div>
+          </div>
+
+          <form id="addEventForm" onsubmit="handleAddEvent(event)" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Judul Kegiatan / Tema Kajian *</label>
+              <input type="text" id="eTitle" required placeholder="Contoh: Tabligh Akbar & Safari Dakwah Subuh" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Kategori *</label>
+                <select id="eCategory" class="w-full px-3 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600 bg-white">
+                  <option value="Kajian Rutin">Kajian Rutin</option>
+                  <option value="Safari Dakwah">Safari Dakwah</option>
+                  <option value="Pelatihan Dai">Pelatihan Dai</option>
+                  <option value="Bakti Sosial">Bakti Sosial</option>
+                  <option value="Rapat Kerja">Rapat Kerja</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Tanggal *</label>
+                <input type="date" id="eDate" required class="w-full px-3 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Waktu *</label>
+                <input type="text" id="eTime" required placeholder="05.00 WIB - Selesai" class="w-full px-3 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Lokasi / Masjid *</label>
+                <input type="text" id="eLocation" required placeholder="Masjid Agung Nur Arafah, Prabumulih Barat" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-emerald-900 mb-1">Status Kegiatan *</label>
+                <select id="eStatus" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600 bg-white">
+                  <option value="Akan Datang">Akan Datang</option>
+                  <option value="Terlaksana">Terlaksana</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Pemateri / Penanggung Jawab</label>
+              <input type="text" id="eSpeaker" placeholder="Contoh: Ust. H. Ahmad Fauzi, Lc." class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Deskripsi & Keterangan *</label>
+              <textarea id="eDesc" rows="2" required placeholder="Tuliskan ringkasan materi kajian, sasaran jamaah, atau hasil kegiatan..." class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600"></textarea>
+            </div>
+            <!-- Event Photo Upload -->
+            <div class="bg-amber-50/70 p-3 rounded-2xl border border-dashed border-amber-300">
+              <label class="block text-xs font-bold text-emerald-900 mb-1.5">Unggah Poster / Foto Dokumentasi Kegiatan</label>
+              <div class="flex items-center gap-3">
+                <img id="ePhotoPreview" src="" alt="Preview" class="hidden w-20 h-14 rounded-xl object-cover border border-amber-400 shadow-sm" />
+                <div class="flex-1">
+                  <input type="file" id="ePhotoInput" accept="image/*" onchange="previewCompressedImage(this, 'ePhotoPreview', 'ePhotoData', 800, 480)" class="text-xs text-emerald-900 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-emerald-950 hover:file:bg-amber-400 cursor-pointer" />
+                  <input type="hidden" id="ePhotoData" />
+                </div>
+                <button type="button" onclick="clearImageField('ePhotoInput', 'ePhotoPreview', 'ePhotoData')" class="text-xs text-rose-600 font-bold hover:underline">Hapus</button>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-extrabold text-sm shadow-md transition">
+              + Publikasikan Agenda Kegiatan
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Security & Account Management Card (Highlighted & Complete) -->
+      <div id="securitySettingsCard" class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-emerald-700/30">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-emerald-100">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-900 text-amber-400 flex items-center justify-center text-xl shadow">🔐</div>
+            <div>
+              <h3 class="text-lg font-extrabold text-emerald-950">Pengaturan Keamanan: Ganti Username & Kata Sandi Admin</h3>
+              <p class="text-xs text-emerald-700">Pembaruan kredensial langsung tersinkronisasi ke Cloud untuk semua perangkat login berikutnya.</p>
+            </div>
+          </div>
+          <div class="text-xs bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl text-emerald-900">
+            Akun Aktif: <strong id="securityCurrentUser" class="text-emerald-800">admin</strong>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Sub-form A: Ubah Username -->
+          <form onsubmit="handleUpdateUsername(event)" class="space-y-4 bg-emerald-50/40 p-5 rounded-2xl border border-emerald-100">
+            <h4 class="font-extrabold text-sm text-emerald-950 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-emerald-800 text-white text-xs flex items-center justify-center">1</span>
+              <span>Ubah Username & Nama Tampilan Admin</span>
+            </h4>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Username Baru (Minimal 4 karakter, tanpa spasi)</label>
+              <input type="text" id="newUsernameInput" required minlength="4" placeholder="contoh: admin_ikadi_barat" class="w-full px-3.5 py-2.5 rounded-xl border border-emerald-200 bg-white text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Nama Tampilan Pengurus</label>
+              <input type="text" id="newDisplayNameInput" required placeholder="Contoh: Sekretaris IKADI Prabumulih Barat" class="w-full px-3.5 py-2.5 rounded-xl border border-emerald-200 bg-white text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Konfirmasi Kata Sandi Saat Ini *</label>
+              <input type="password" id="confirmPassForUser" required placeholder="Masukkan kata sandi aktif Anda" class="w-full px-3.5 py-2.5 rounded-xl border border-emerald-200 bg-white text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition shadow">
+              Simpan Username Baru
+            </button>
+          </form>
+
+          <!-- Sub-form B: Ganti Kata Sandi -->
+          <form onsubmit="handleUpdatePassword(event)" class="space-y-4 bg-amber-50/40 p-5 rounded-2xl border border-amber-200/70">
+            <h4 class="font-extrabold text-sm text-emerald-950 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-amber-500 text-emerald-950 text-xs flex items-center justify-center">2</span>
+              <span>Ganti Kata Sandi Berkualitas Tinggi</span>
+            </h4>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Kata Sandi Saat Ini *</label>
+              <input type="password" id="oldPasswordInput" required placeholder="Masukkan sandi lama" class="w-full px-3.5 py-2.5 rounded-xl border border-emerald-200 bg-white text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Kata Sandi Baru *</label>
+              <div class="relative">
+                <input type="password" id="newPasswordInput" required oninput="evaluatePasswordStrength(this.value)" placeholder="Minimal 8 karakter kombinasi" class="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-emerald-200 bg-white text-sm outline-none focus:border-emerald-600" />
+                <button type="button" onclick="toggleInputVisibility('newPasswordInput')" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-emerald-700">👁️</button>
+              </div>
+              <!-- Password Strength Meter -->
+              <div class="mt-2 space-y-1.5">
+                <div class="flex items-center justify-between text-[11px] font-bold">
+                  <span class="text-emerald-800">Kekuatan Sandi:</span>
+                  <span id="strengthLabel" class="text-slate-500">Belum diisi</span>
+                </div>
+                <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                  <div id="strengthBar" class="h-full w-0 bg-rose-500 transition-all duration-300"></div>
+                </div>
+                <ul class="grid grid-cols-2 gap-1 text-[11px] text-emerald-800 pt-1">
+                  <li id="chkLen">○ Minimal 8 karakter</li>
+                  <li id="chkCase">○ Huruf besar & kecil</li>
+                  <li id="chkNum">○ Mengandung angka</li>
+                  <li id="chkSym">○ Simbol (@#$! dll)</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-emerald-900 mb-1">Ulangi Kata Sandi Baru *</label>
+              <input type="password" id="confirmNewPasswordInput" required placeholder="Ketik ulang kata sandi baru" class="w-full px-3.5 py-2.5 rounded-xl border border-emerald-200 bg-white text-sm outline-none focus:border-emerald-600" />
+            </div>
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-extrabold text-xs sm:text-sm transition shadow">
+              Perbarui Kata Sandi Admin
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-emerald-950 text-emerald-100 border-t border-emerald-900 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-white rounded-lg px-2 py-1">
+          <svg class="h-8 w-auto" viewBox="0 0 360 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="65" y="36" fill="#111111" font-family="Arial Narrow, sans-serif" font-style="italic" font-weight="700" font-size="21">IKATAN DA'I INDONESIA</text>
+            <g transform="translate(288, 28)">
+              <rect x="-15" y="-15" width="30" height="30" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+              <rect x="-15" y="-15" width="30" height="30" transform="rotate(45)" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+            </g>
+            <text x="8" y="132" fill="#00923F" font-family="Georgia, serif" font-weight="700" font-size="116" letter-spacing="-3">Ikadi</text>
+            <path d="M52 135 C 145 182, 305 162, 336 86 C 344 68, 338 54, 325 48 C 348 64, 354 95, 334 126 C 296 182, 136 190, 52 135 Z" fill="#F5B800"/>
+          </svg>
+        </div>
+        <div>
+          <div id="footerOrgName" class="font-extrabold text-white text-sm">IKADI Kecamatan Prabumulih Barat</div>
+          <div class="text-xs text-emerald-300/80">Ikatan Da'i Indonesia • Kota Prabumulih, Sumatera Selatan</div>
+        </div>
+      </div>
+      <div class="text-xs text-emerald-300/80 text-center sm:text-right">
+        Portal Publikasi & Direktori Dakwah Resmi • Sinkronisasi Cloud Multi-Perangkat
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: LOGIN & REGISTER ADMIN -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-emerald-200 animate-fadeIn">
+      <div class="islamic-pattern p-6 text-white text-center relative">
+        <button onclick="closeModal('loginModal')" class="absolute right-4 top-4 w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-sm font-bold">✕</button>
+        <div class="inline-block bg-white rounded-2xl px-3.5 py-2 shadow-md mb-3">
+          <svg class="h-11 w-auto" viewBox="0 0 360 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="65" y="36" fill="#111111" font-family="Arial Narrow, sans-serif" font-style="italic" font-weight="700" font-size="21">IKATAN DA'I INDONESIA</text>
+            <g transform="translate(288, 28)">
+              <rect x="-15" y="-15" width="30" height="30" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+              <rect x="-15" y="-15" width="30" height="30" transform="rotate(45)" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+            </g>
+            <text x="8" y="132" fill="#00923F" font-family="Georgia, serif" font-weight="700" font-size="116" letter-spacing="-3">Ikadi</text>
+            <path d="M52 135 C 145 182, 305 162, 336 86 C 344 68, 338 54, 325 48 C 348 64, 354 95, 334 126 C 296 182, 136 190, 52 135 Z" fill="#F5B800"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-extrabold">Akses Pengurus & Admin</h3>
+        <p class="text-xs text-emerald-200">IKADI Kecamatan Prabumulih Barat</p>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="grid grid-cols-2 border-b border-emerald-100 text-xs font-extrabold">
+        <button id="authTabLogin" onclick="switchAuthTab('login')" class="py-3 bg-emerald-50 text-emerald-900 border-b-2 border-emerald-700">Masuk (Login)</button>
+        <button id="authTabRegister" onclick="switchAuthTab('register')" class="py-3 text-slate-500 hover:text-emerald-800">Daftar Pengurus Baru</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" onsubmit="handleAdminLogin(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Username atau Email Admin</label>
+          <input type="text" id="loginUsername" required placeholder="admin" class="w-full px-3.5 py-2.5 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Kata Sandi</label>
+          <div class="relative">
+            <input type="password" id="loginPassword" required placeholder="••••••••••••" class="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-emerald-200 text-sm outline-none focus:border-emerald-600" />
+            <button type="button" onclick="toggleInputVisibility('loginPassword')" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs">👁️</button>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-emerald-900 flex items-center justify-between gap-2">
+          <div>
+            <div><strong>Default:</strong> <code>admin</code></div>
+            <div><strong>Sandi:</strong> <code>ikadiprabubarat2026</code></div>
+          </div>
+          <button type="button" onclick="fillAndSubmitDemoAdmin()" class="px-2.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-emerald-950 font-extrabold shrink-0">
+            Isi & Masuk
+          </button>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition">
+          Masuk ke Panel Pengurus
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" onsubmit="handleRegisterAdmin(event)" class="hidden p-6 space-y-3.5">
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Nama Lengkap Pengurus</label>
+          <input type="text" id="regDisplayName" required placeholder="Ust. Muhammad Ridwan" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Username Baru</label>
+          <input type="text" id="regUsername" required minlength="4" placeholder="ridwan_ikadi" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Kata Sandi Baru (Min. 8 karakter)</label>
+          <input type="password" id="regPassword" required minlength="8" placeholder="Minimal 8 karakter" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Kode Otorisasi Cabang *</label>
+          <input type="text" id="regAuthCode" required placeholder="IKADI-PRABUBARAT-2026" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+          <p class="text-[10px] text-emerald-700 mt-1">Kode default cabang: <code>IKADI-PRABUBARAT-2026</code></p>
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-extrabold text-sm shadow-md transition">
+          Daftarkan Akun Pengurus
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: SHARE & AUTO-GENERATE WEB PORTAL -->
+  <div id="shareModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-emerald-200">
+      <div class="bg-emerald-950 text-white p-5 flex items-center justify-between">
+        <div>
+          <h3 class="font-extrabold text-base">Bagikan & Publikasikan Portal Web</h3>
+          <p class="text-xs text-emerald-300">Tautan web otomatis, QR Code, WhatsApp & Ekspor HTML Mandiri</p>
+        </div>
+        <button onclick="closeModal('shareModal')" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+
+      <div class="p-6 space-y-5 max-h-[82vh] overflow-y-auto">
+        <!-- Generated Link -->
+        <div>
+          <label class="block text-xs font-extrabold text-emerald-950 mb-1.5">Tautan Web Portal Otomatis (Berisi Data Terkini)</label>
+          <div class="flex gap-2">
+            <input id="generatedShareUrl" type="text" readonly class="flex-1 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-mono" />
+            <button onclick="copyShareUrl()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold shrink-0">
+              Salin Link
+            </button>
+          </div>
+        </div>
+
+        <!-- QR Code & Quick Actions -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200">
+          <div class="flex flex-col items-center justify-center bg-white p-3 rounded-2xl border border-emerald-100 shadow-sm">
+            <div id="qrcodeContainer" class="flex items-center justify-center"></div>
+            <button onclick="downloadQrPng()" class="mt-2.5 text-[11px] font-extrabold text-emerald-800 hover:underline">
+              ⬇️ Unduh QR Code (PNG)
+            </button>
+          </div>
+          <div class="space-y-2.5">
+            <button onclick="shareToWhatsApp()" class="w-full py-2.5 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow">
+              <span>📲</span>
+              <span>Bagikan ke WhatsApp</span>
+            </button>
+            <button onclick="downloadStandaloneHtml()" class="w-full py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-extrabold text-xs flex items-center justify-center gap-2 shadow">
+              <span>🌐</span>
+              <span>Unduh Web Mandiri (.html)</span>
+            </button>
+            <p class="text-[11px] text-emerald-800 leading-relaxed">
+              File <strong>.html</strong> mandiri membungkus seluruh data + foto resolusi penuh dan siap langsung di-hosting gratis ke Netlify/GitHub Pages.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: EDIT PROFILE, LOGO & VISI MISI -->
+  <div id="editProfileModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-emerald-200">
+      <div class="bg-emerald-950 text-white p-5 flex items-center justify-between">
+        <h3 class="font-extrabold text-base">Sunting Profil, Logo & Visi Misi Organisasi</h3>
+        <button onclick="closeModal('editProfileModal')" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+      <form onsubmit="handleSaveProfile(event)" class="p-6 space-y-3.5 max-h-[82vh] overflow-y-auto">
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Nama Organisasi</label>
+          <input type="text" id="profName" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Subjudul / Wilayah Kerja</label>
+          <input type="text" id="profSub" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Slogan / Tagline</label>
+          <input type="text" id="profTagline" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Deskripsi Singkat</label>
+          <textarea id="profDesc" rows="2" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Visi Organisasi</label>
+          <textarea id="profVisi" rows="2" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Misi Utama</label>
+          <textarea id="profMisi" rows="2" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none"></textarea>
+        </div>
+        <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Logo Kustom Cabang (Opsional — Default Logo Resmi IKADI)</label>
+          <div class="flex items-center gap-3">
+            <input type="file" id="profLogoInput" accept="image/*" onchange="previewCompressedImage(this, 'profLogoPreview', 'profLogoData', 360, 180)" class="text-xs text-emerald-900" />
+            <input type="hidden" id="profLogoData" />
+            <button type="button" onclick="resetDefaultLogo()" class="text-xs font-bold text-amber-700 hover:underline shrink-0">Reset Logo IKADI</button>
+          </div>
+          <img id="profLogoPreview" src="" alt="" class="hidden h-12 mt-2 rounded bg-white p-1 border" />
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold text-sm">
+          Simpan Perubahan Profil
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: EDIT MEMBER MODAL -->
+  <div id="editMemberModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-emerald-200">
+      <div class="bg-emerald-950 text-white p-5 flex items-center justify-between">
+        <h3 class="font-extrabold text-base">Sunting Data Pengurus / Dai</h3>
+        <button onclick="closeModal('editMemberModal')" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+      <form onsubmit="handleUpdateMember(event)" class="p-6 space-y-3.5 max-h-[82vh] overflow-y-auto">
+        <input type="hidden" id="editMId" />
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Nama Lengkap & Gelar</label>
+          <input type="text" id="editMName" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Jabatan</label>
+            <input type="text" id="editMRole" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Bidang / Divisi</label>
+            <select id="editMDivision" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none bg-white">
+              <option value="Pengurus Inti">Pengurus Inti</option>
+              <option value="Bidang Dakwah & Masjid">Bidang Dakwah & Masjid</option>
+              <option value="Bidang Kaderisasi & Pelatihan">Bidang Kaderisasi & Pelatihan</option>
+              <option value="Bidang Muslimah & Keluarga">Bidang Muslimah & Keluarga</option>
+              <option value="Bidang Sosial & Humas">Bidang Sosial & Humas</option>
+              <option value="Korps Mubaligh / Dai">Korps Mubaligh / Dai</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Kelurahan Binaan</label>
+            <select id="editMKelurahan" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none bg-white">
+              <option value="Kel. Prabumulih">Kel. Prabumulih</option>
+              <option value="Kel. Pasar Prabumulih">Kel. Pasar Prabumulih</option>
+              <option value="Kel. Patih Galung">Kel. Patih Galung</option>
+              <option value="Kel. Gunung Kemala">Kel. Gunung Kemala</option>
+              <option value="Kel. Payuputat">Kel. Payuputat</option>
+              <option value="Kel. Tanjung Raman">Kel. Tanjung Raman</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">No. HP / WA</label>
+            <input type="text" id="editMPhone" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Keahlian / Fokus Dakwah</label>
+          <input type="text" id="editMSpecialty" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Ganti Foto Profil</label>
+          <div class="flex items-center gap-3">
+            <img id="editMPhotoPreview" src="" alt="" class="hidden w-12 h-12 rounded-full object-cover border" />
+            <input type="file" id="editMPhotoInput" accept="image/*" onchange="previewCompressedImage(this, 'editMPhotoPreview', 'editMPhotoData', 320, 320)" class="text-xs" />
+            <input type="hidden" id="editMPhotoData" />
+            <button type="button" onclick="clearImageField('editMPhotoInput', 'editMPhotoPreview', 'editMPhotoData')" class="text-xs text-rose-600 font-bold">Hapus</button>
+          </div>
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold text-sm">
+          Simpan Perubahan Anggota
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 5: EDIT EVENT MODAL -->
+  <div id="editEventModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-emerald-200">
+      <div class="bg-emerald-950 text-white p-5 flex items-center justify-between">
+        <h3 class="font-extrabold text-base">Sunting Agenda & Foto Kegiatan</h3>
+        <button onclick="closeModal('editEventModal')" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+      <form onsubmit="handleUpdateEvent(event)" class="p-6 space-y-3.5 max-h-[82vh] overflow-y-auto">
+        <input type="hidden" id="editEId" />
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Judul Kegiatan</label>
+          <input type="text" id="editETitle" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Kategori</label>
+            <select id="editECategory" class="w-full px-2.5 py-2 rounded-xl border border-emerald-200 text-xs outline-none bg-white">
+              <option value="Kajian Rutin">Kajian Rutin</option>
+              <option value="Safari Dakwah">Safari Dakwah</option>
+              <option value="Pelatihan Dai">Pelatihan Dai</option>
+              <option value="Bakti Sosial">Bakti Sosial</option>
+              <option value="Rapat Kerja">Rapat Kerja</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Tanggal</label>
+            <input type="date" id="editEDate" required class="w-full px-2.5 py-2 rounded-xl border border-emerald-200 text-xs outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Waktu</label>
+            <input type="text" id="editETime" required class="w-full px-2.5 py-2 rounded-xl border border-emerald-200 text-xs outline-none" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Lokasi</label>
+            <input type="text" id="editELocation" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-emerald-900 mb-1">Status</label>
+            <select id="editEStatus" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none bg-white">
+              <option value="Akan Datang">Akan Datang</option>
+              <option value="Terlaksana">Terlaksana</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Pemateri / PJ</label>
+          <input type="text" id="editESpeaker" class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Deskripsi</label>
+          <textarea id="editEDesc" rows="2" required class="w-full px-3.5 py-2 rounded-xl border border-emerald-200 text-sm outline-none"></textarea>
+        </div>
+        <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200">
+          <label class="block text-xs font-bold text-emerald-900 mb-1">Ganti Poster / Foto Dokumentasi</label>
+          <div class="flex items-center gap-3">
+            <img id="editEPhotoPreview" src="" alt="" class="hidden w-16 h-12 rounded-lg object-cover border" />
+            <input type="file" id="editEPhotoInput" accept="image/*" onchange="previewCompressedImage(this, 'editEPhotoPreview', 'editEPhotoData', 800, 480)" class="text-xs" />
+            <input type="hidden" id="editEPhotoData" />
+            <button type="button" onclick="clearImageField('editEPhotoInput', 'editEPhotoPreview', 'editEPhotoData')" class="text-xs text-rose-600 font-bold">Hapus</button>
+          </div>
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-extrabold text-sm">
+          Simpan Perubahan Kegiatan
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 6: CLOUD ONLINE SETTINGS (FIREBASE CONFIG FOR SELF-HOSTING) -->
+  <div id="cloudSettingsModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-emerald-200">
+      <div class="bg-emerald-950 text-white p-5 flex items-center justify-between">
+        <div>
+          <h3 class="font-extrabold text-base">Pengaturan Database Online (Firebase Cloud)</h3>
+          <p class="text-xs text-emerald-300">Sinkronisasi real-time lintas perangkat saat di-hosting online</p>
+        </div>
+        <button onclick="closeModal('cloudSettingsModal')" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-xs">
+        <div id="cloudDetailBox" class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 leading-relaxed">
+          Status saat ini: <strong id="cloudModalStatus">Memeriksa koneksi...</strong>
+        </div>
+        <div>
+          <label class="block font-bold text-emerald-900 mb-1">Tempel JSON <code>firebaseConfig</code> (Opsional untuk Domain Sendiri):</label>
+          <textarea id="firebaseConfigInput" rows="5" placeholder='{"apiKey":"...","authDomain":"...","projectId":"...","storageBucket":"...","messagingSenderId":"...","appId":"..."}' class="w-full p-3 rounded-xl border border-emerald-200 font-mono text-[11px] outline-none focus:border-emerald-600"></textarea>
+        </div>
+        <div class="flex flex-wrap gap-2 justify-end">
+          <button type="button" onclick="syncLocalToCloudNow()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-extrabold">
+            Sinkronkan Data Sekarang
+          </button>
+          <button type="button" onclick="saveCustomFirebaseConfig()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold">
+            Simpan & Hubungkan Cloud
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Modular SDK & Application Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const DEFAULT_LOGO_SVG = `
+      <svg class="h-9 sm:h-11 w-auto" viewBox="0 0 360 175" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo IKADI">
+        <text x="65" y="36" fill="#111111" font-family="Arial Narrow, Plus Jakarta Sans, sans-serif" font-style="italic" font-weight="700" font-size="21" letter-spacing="0.4">IKATAN DA'I INDONESIA</text>
+        <g transform="translate(288, 28)">
+          <rect x="-15" y="-15" width="30" height="30" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+          <rect x="-15" y="-15" width="30" height="30" transform="rotate(45)" stroke="#F5B800" stroke-width="2.6" fill="none"/>
+          <rect x="-10" y="-10" width="20" height="20" stroke="#F5B800" stroke-width="2.2" fill="none"/>
+          <rect x="-10" y="-10" width="20" height="20" transform="rotate(45)" stroke="#F5B800" stroke-width="2.2" fill="none"/>
+          <rect x="-5" y="-5" width="10" height="10" stroke="#F5B800" stroke-width="1.8" fill="none"/>
+          <rect x="-5" y="-5" width="10" height="10" transform="rotate(45)" stroke="#F5B800" stroke-width="1.8" fill="none"/>
+        </g>
+        <text x="8" y="132" fill="#00923F" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="116" letter-spacing="-3">Ikadi</text>
+        <path d="M52 135 C 145 182, 305 162, 336 86 C 344 68, 338 54, 325 48 C 348 64, 354 95, 334 126 C 296 182, 136 190, 52 135 Z" fill="#F5B800"/>
+      </svg>`;
+
+    const DEFAULT_STATE = {
+      profile: {
+        name: "IKADI Kecamatan Prabumulih Barat",
+        subtitle: "Ikatan Da'i Indonesia • Kota Prabumulih, Sumatera Selatan",
+        tagline: "Merajut Ukhuwah, Menebar Dakwah Rahmatan Lil 'Alamin",
+        description: "Media informasi resmi pengurus, korps mubaligh/dai-daiyah, serta publikasi jadwal kajian dan kegiatan sosial keumatan di wilayah Kecamatan Prabumulih Barat, Kota Prabumulih.",
+        visi: "Menjadi lembaga dakwah terdepan yang melahirkan para dai profesional, moderat, dan mencerahkan masyarakat Prabumulih Barat.",
+        misi: "Mengokohkan pembinaan dai, memperluas syiar Islam yang sejuk di seluruh kelurahan, serta bersinergi membangun ketahanan keluarga dan umat.",
+        customLogo: ""
+      },
+      admins: [
+        {
+          username: "admin",
+          password: "ikadiprabubarat2026",
+          displayName: "Admin Utama IKADI Prabubarat",
+          updatedAt: new Date().toISOString()
+        }
+      ],
+      authCode: "IKADI-PRABUBARAT-2026",
+      members: [
+        {
+          id: "m1",
+          name: "Ust. H. Ahmad Fauzi, Lc., M.Pd.I",
+          role: "Ketua PC IKADI Prabumulih Barat",
+          division: "Pengurus Inti",
+          kelurahan: "Kel. Prabumulih",
+          phone: "0812-7890-1122",
+          specialty: "Tafsir, Fiqih Muamalah & Khutbah Jumat",
+          photo: ""
+        },
+        {
+          id: "m2",
+          name: "Ust. Muhammad Ridwan, S.Pd.I",
+          role: "Sekretaris Cabang",
+          division: "Pengurus Inti",
+          kelurahan: "Kel. Pasar Prabumulih",
+          phone: "0813-6745-3344",
+          specialty: "Manajemen Dakwah & Pembinaan Remaja Masjid",
+          photo: ""
+        },
+        {
+          id: "m3",
+          name: "Ust. Abdurrahman Wahid, S.Ag",
+          role: "Koordinator Bidang Dakwah",
+          division: "Bidang Dakwah & Masjid",
+          kelurahan: "Kel. Patih Galung",
+          phone: "0821-8899-5566",
+          specialty: "Kajian Sirah Nabawiyah & Safari Subuh",
+          photo: ""
+        },
+        {
+          id: "m4",
+          name: "Ustadzah Hj. Siti Aminah, S.Ag",
+          role: "Koordinator Bidang Muslimah",
+          division: "Bidang Muslimah & Keluarga",
+          kelurahan: "Kel. Gunung Kemala",
+          phone: "0852-6677-8899",
+          specialty: "Fiqih Wanita & Ketahanan Keluarga Sakinah",
+          photo: ""
+        },
+        {
+          id: "m5",
+          name: "Ust. Zulkarnain Al-Hafidz",
+          role: "Koordinator Kaderisasi & Tahfidz",
+          division: "Bidang Kaderisasi & Pelatihan",
+          kelurahan: "Kel. Payuputat",
+          phone: "0822-4455-7788",
+          specialty: "Tahsin Al-Qur'an & Pelatihan Khatib Muda",
+          photo: ""
+        },
+        {
+          id: "m6",
+          name: "Ust. Hendra Saputra, S.Sos",
+          role: "Koordinator Sosial & Humas",
+          division: "Bidang Sosial & Humas",
+          kelurahan: "Kel. Tanjung Raman",
+          phone: "0819-3322-1100",
+          specialty: "Bakti Sosial Keumatan & Media Dakwah",
+          photo: ""
+        }
+      ],
+      events: [
+        {
+          id: "e1",
+          title: "Safari Dakwah Subuh & Silaturahmi Dai se-Prabumulih Barat",
+          category: "Safari Dakwah",
+          date: "2026-11-29",
+          time: "04.45 WIB - Selesai",
+          location: "Masjid Agung Nur Arafah, Kel. Pasar Prabumulih",
+          speaker: "Ust. H. Ahmad Fauzi, Lc., M.Pd.I",
+          status: "Akan Datang",
+          description: "Kegiatan shalat subuh berjamaah dilanjutkan tausiyah penguatan ukhuwah Islamiyah dan sarapan bersama jamaah masjid se-Kecamatan Prabumulih Barat.",
+          photo: ""
+        },
+        {
+          id: "e2",
+          title: "Dauroh & Pelatihan Khatib Jumat Angkatan III",
+          category: "Pelatihan Dai",
+          date: "2026-12-06",
+          time: "08.00 - 15.00 WIB",
+          location: "Aula Gedung Dakwah IKADI, Kel. Patih Galung",
+          speaker: "Tim Korps Mubaligh IKADI Kota Prabumulih",
+          status: "Akan Datang",
+          description: "Pembekalan retorika khutbah, penyusunan naskah khutbah aktual, dan standarisasi rukun khutbah bagi para dai muda dan pengurus masjid.",
+          photo: ""
+        },
+        {
+          id: "e3",
+          title: "Kajian Fiqih Keluarga & Tebar Paket Sembako Dhuafa",
+          category: "Bakti Sosial",
+          date: "2026-11-08",
+          time: "09.00 - 11.30 WIB",
+          location: "Masjid Al-Ikhlas, Kel. Gunung Kemala",
+          speaker: "Ustadzah Hj. Siti Aminah, S.Ag",
+          status: "Terlaksana",
+          description: "Kajian majelis taklim muslimah yang dirangkaikan dengan penyaluran 75 paket sembako bagi warga prasejahtera di Kelurahan Gunung Kemala dan Payuputat.",
+          photo: ""
+        }
+      ],
+      updatedAt: new Date().toISOString()
+    };
+
+    const LOCAL_STORAGE_KEY = "ikadi_prabubarat_portal_v3";
+    const SESSION_KEY = "ikadi_prabubarat_admin_session_v3";
+    const CUSTOM_FB_KEY = "ikadi_prabubarat_custom_fb";
+
+    let appState = structuredClone(DEFAULT_STATE);
+    let currentAdmin = null;
+    let db = null;
+    let cloudDocRef = null;
+    let isCloudConnected = false;
+
+    // Load from localStorage or URL hash (#web=...) first for instant render
+    function loadInitialLocalState() {
+      try {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith("#web=")) {
+          const compressed = hash.slice(5);
+          const jsonStr = LZString.decompressFromEncodedURIComponent(compressed);
+          if (jsonStr) {
+            const parsed = JSON.parse(jsonStr);
+            if (parsed && parsed.profile) {
+              appState = { ...structuredClone(DEFAULT_STATE), ...parsed };
+              showToast("Portal web berhasil dimuat dari tautan!", "success");
+              return;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Hash decode skipped:", e);
+      }
+
+      try {
+        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          appState = { ...structuredClone(DEFAULT_STATE), ...parsed };
+        }
+      } catch (e) {
+        console.warn("Local load error:", e);
+      }
+
+      try {
+        const savedSession = sessionStorage.getItem(SESSION_KEY) || localStorage.getItem(SESSION_KEY);
+        if (savedSession) {
+          currentAdmin = JSON.parse(savedSession);
+        }
+      } catch (e) {}
+    }
+
+    function saveToLocalCache() {
+      try {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        console.warn("Local storage quota notice:", e);
+      }
+    }
+
+    async function persistState(successMessage = "Perubahan berhasil disimpan!") {
+      appState.updatedAt = new Date().toISOString();
+      saveToLocalCache();
+      renderAll();
+
+      if (isCloudConnected && cloudDocRef) {
+        try {
+          await setDoc(cloudDocRef, appState);
+          showToast(successMessage + " (Tersinkron ke Cloud)", "success");
+        } catch (err) {
+          console.error("Cloud write error:", err);
+          showToast(successMessage + " (Tersimpan Lokal)", "warning");
+        }
+      } else {
+        showToast(successMessage, "success");
+      }
+    }
+
+    // Initialize Firebase Cloud Firestore automatically
+    async function initCloudSync() {
+      let fbConfig = null;
+      if (typeof __firebase_config !== "undefined" && __firebase_config) {
+        try {
+          fbConfig = typeof __firebase_config === "string" ? JSON.parse(__firebase_config) : __firebase_config;
+        } catch (e) {}
+      }
+      if (!fbConfig) {
+        try {
+          const customRaw = localStorage.getItem(CUSTOM_FB_KEY);
+          if (customRaw) fbConfig = JSON.parse(customRaw);
+        } catch (e) {}
+      }
+
+      if (!fbConfig || !fbConfig.apiKey) {
+        setCloudStatus(false, "Mode Siap Online (Lokal Aktif)");
+        return;
+      }
+
+      try {
+        const app = initializeApp(fbConfig);
+        const auth = getAuth(app);
+        db = getFirestore(app);
+        const appId = typeof __app_id !== "undefined" ? __app_id : "ikadi-prabumulih-barat";
+        cloudDocRef = doc(db, "artifacts", appId, "public", "data", "portalState", "main");
+
+        await signInAnonymously(auth);
+
+        onAuthStateChanged(auth, async (user) => {
+          if (!user) return;
+          isCloudConnected = true;
+          setCloudStatus(true, "Online Cloud (Sinkron Real-Time)");
+
+          // Seed if empty, then subscribe real-time
+          const snap = await getDoc(cloudDocRef);
+          if (!snap.exists()) {
+            await setDoc(cloudDocRef, appState);
+          }
+
+          onSnapshot(cloudDocRef, (docSnap) => {
+            if (docSnap.exists()) {
+              const remoteData = docSnap.data();
+              if (remoteData && remoteData.profile) {
+                appState = { ...structuredClone(DEFAULT_STATE), ...remoteData };
+                saveToLocalCache();
+                renderAll();
+              }
+            }
+          });
+        });
+      } catch (err) {
+        console.warn("Firebase init fallback:", err);
+        setCloudStatus(false, "Mode Offline / Cadangan Lokal");
+      }
+    }
+
+    function setCloudStatus(online, text) {
+      const dot = document.getElementById("cloudStatusDot");
+      const label = document.getElementById("cloudStatusText");
+      const modalStatus = document.getElementById("cloudModalStatus");
+      if (label) label.textContent = text;
+      if (modalStatus) modalStatus.textContent = text;
+      if (dot) {
+        dot.className = online
+          ? "w-2 h-2 rounded-full bg-emerald-400"
+          : "w-2 h-2 rounded-full bg-amber-400";
+      }
+    }
+
+    // Rendering Functions
+    function renderAll() {
+      // Profile
+      document.getElementById("navOrgName").textContent = appState.profile.name;
+      document.getElementById("navOrgSub").textContent = appState.profile.subtitle;
+      document.getElementById("footerOrgName").textContent = appState.profile.name;
+      document.getElementById("heroTagline").textContent = appState.profile.tagline;
+      document.getElementById("heroTitle").textContent = "Portal Resmi & Direktori Dakwah " + appState.profile.name;
+      document.getElementById("heroDescription").textContent = appState.profile.description;
+      document.getElementById("heroVisi").textContent = appState.profile.visi;
+      document.getElementById("heroMisi").textContent = appState.profile.misi;
+
+      // Custom Logo if uploaded
+      const headerLogo = document.getElementById("headerLogoContainer");
+      if (appState.profile.customLogo) {
+        headerLogo.innerHTML = `<img src="${appState.profile.customLogo}" alt="Logo IKADI" class="h-10 sm:h-11 w-auto object-contain" />`;
+      } else {
+        headerLogo.innerHTML = DEFAULT_LOGO_SVG;
+      }
+
+      // Stats
+      const members = appState.members || [];
+      const events = appState.events || [];
+      document.getElementById("statMembers").textContent = members.length;
+      document.getElementById("statUpcoming").textContent = events.filter(e => e.status === "Akan Datang").length;
+      document.getElementById("statDone").textContent = events.filter(e => e.status === "Terlaksana").length;
+
+      // Last updated
+      if (appState.updatedAt) {
+        const d = new Date(appState.updatedAt);
+        document.getElementById("lastUpdatedLabel").textContent = d.toLocaleDateString("id-ID", {
+          day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"
+        }) + " WIB";
+      }
+
+      updateAdminUIState();
+      renderMembers();
+      renderEvents();
+    }
+
+    function updateAdminUIState() {
+      const btnLogin = document.getElementById("btnLoginHeader");
+      const adminGroup = document.getElementById("adminHeaderGroup");
+      const controlBar = document.getElementById("adminControlBar");
+      const tabAdmin = document.getElementById("tabBtn-admin");
+
+      if (currentAdmin) {
+        btnLogin.classList.add("hidden");
+        adminGroup.classList.remove("hidden");
+        adminGroup.classList.add("flex");
+        controlBar.classList.remove("hidden");
+        tabAdmin.classList.remove("hidden");
+        tabAdmin.classList.add("flex");
+        document.getElementById("loggedAdminLabel").textContent = currentAdmin.displayName || currentAdmin.username;
+        document.getElementById("securityCurrentUser").textContent = currentAdmin.username;
+      } else {
+        btnLogin.classList.remove("hidden");
+        adminGroup.classList.add("hidden");
+        adminGroup.classList.remove("flex");
+        controlBar.classList.add("hidden");
+        tabAdmin.classList.add("hidden");
+        tabAdmin.classList.remove("flex");
+        // Ensure admin tab isn't open when logged out
+        if (!document.getElementById("section-admin").classList.contains("hidden")) {
+          switchTab("anggota");
+        }
+      }
+    }
+
+    window.renderMembers = function() {
+      const grid = document.getElementById("membersGrid");
+      const q = (document.getElementById("searchMemberInput").value || "").toLowerCase();
+      const divFilter = document.getElementById("filterDivisionSelect").value;
+      const kelFilter = document.getElementById("filterKelurahanSelect").value;
+
+      const filtered = (appState.members || []).filter(m => {
+        const matchQ = !q ||
+          (m.name && m.name.toLowerCase().includes(q)) ||
+          (m.role && m.role.toLowerCase().includes(q)) ||
+          (m.kelurahan && m.kelurahan.toLowerCase().includes(q)) ||
+          (m.specialty && m.specialty.toLowerCase().includes(q));
+        const matchDiv = divFilter === "ALL" || m.division === divFilter;
+        const matchKel = kelFilter === "ALL" || m.kelurahan === kelFilter;
+        return matchQ && matchDiv && matchKel;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full bg-white rounded-3xl p-10 text-center border border-emerald-100 text-emerald-800">
+          <div class="text-3xl mb-2">🔍</div>
+          <p class="font-bold">Tidak ada data pengurus atau dai yang sesuai filter pencarian.</p>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(m => {
+        const initials = (m.name || "IK").replace(/Ust\.|Ustadzah|H\.|Hj\./gi, "").trim().split(" ").slice(0, 2).map(s => s[0] || "").join("").toUpperCase() || "IK";
+        const avatarHtml = m.photo
+          ? `<img src="${m.photo}" alt="${escapeHtml(m.name)}" class="w-16 h-16 rounded-2xl object-cover border-2 border-amber-400 shadow-sm shrink-0" />`
+          : `<div class="w-16 h-16 rounded-2xl islamic-pattern text-amber-300 font-extrabold text-lg flex items-center justify-center border-2 border-amber-400/70 shadow-sm shrink-0">${initials}</div>`;
+
+        const adminActions = currentAdmin ? `
+          <div class="mt-4 pt-3 border-t border-emerald-100 flex items-center justify-end gap-2">
+            <button onclick="openEditMemberModal('${m.id}')" class="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold">✏️ Sunting</button>
+            <button onclick="deleteMember('${m.id}')" class="px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold">🗑️ Hapus</button>
+          </div>` : "";
+
+        return `
+          <div class="bg-white rounded-3xl p-5 border border-emerald-100 shadow-sm card-hover flex flex-col justify-between">
+            <div>
+              <div class="flex items-start gap-3.5">
+                ${avatarHtml}
+                <div class="min-w-0 flex-1">
+                  <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 mb-1">${escapeHtml(m.division)}</span>
+                  <h4 class="font-extrabold text-emerald-950 text-sm sm:text-base leading-snug">${escapeHtml(m.name)}</h4>
+                  <p class="text-xs font-semibold text-amber-700 mt-0.5">${escapeHtml(m.role)}</p>
+                </div>
+              </div>
+              <div class="mt-4 space-y-1.5 text-xs text-emerald-900/90 bg-emerald-50/60 p-3 rounded-2xl">
+                <div class="flex items-center gap-2">
+                  <span>📍</span>
+                  <span><strong>Wilayah Binaan:</strong> ${escapeHtml(m.kelurahan || "-")}</span>
+                </div>
+                ${m.specialty ? `<div class="flex items-start gap-2"><span>📖</span><span><strong>Fokus:</strong> ${escapeHtml(m.specialty)}</span></div>` : ""}
+                ${m.phone ? `<div class="flex items-center gap-2"><span>📞</span><span>${escapeHtml(m.phone)}</span></div>` : ""}
+              </div>
+            </div>
+            ${adminActions}
+          </div>
+        `;
+      }).join("");
+    };
+
+    window.renderEvents = function() {
+      const grid = document.getElementById("eventsGrid");
+      const q = (document.getElementById("searchEventInput").value || "").toLowerCase();
+      const statusFilter = document.getElementById("filterEventStatus").value;
+      const catFilter = document.getElementById("filterEventCategory").value;
+
+      const filtered = (appState.events || []).filter(ev => {
+        const matchQ = !q ||
+          (ev.title && ev.title.toLowerCase().includes(q)) ||
+          (ev.location && ev.location.toLowerCase().includes(q)) ||
+          (ev.speaker && ev.speaker.toLowerCase().includes(q));
+        const matchStatus = statusFilter === "ALL" || ev.status === statusFilter;
+        const matchCat = catFilter === "ALL" || ev.category === catFilter;
+        return matchQ && matchStatus && matchCat;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full bg-white rounded-3xl p-10 text-center border border-emerald-100 text-emerald-800">
+          <div class="text-3xl mb-2">📅</div>
+          <p class="font-bold">Belum ada agenda kegiatan yang sesuai dengan filter.</p>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(ev => {
+        const isUpcoming = ev.status === "Akan Datang";
+        const badgeClass = isUpcoming
+          ? "bg-amber-400 text-emerald-950"
+          : "bg-emerald-700 text-white";
+
+        const bannerHtml = ev.photo
+          ? `<img src="${ev.photo}" alt="${escapeHtml(ev.title)}" class="w-full h-44 object-cover" />`
+          : `<div class="w-full h-36 islamic-pattern flex flex-col items-center justify-center text-center p-4 relative">
+               <span class="text-amber-300 text-2xl mb-1">🕌</span>
+               <span class="text-xs font-extrabold text-white/90 uppercase tracking-wider">${escapeHtml(ev.category)}</span>
+             </div>`;
+
+        const adminActions = currentAdmin ? `
+          <div class="flex items-center gap-1.5">
+            <button onclick="openEditEventModal('${ev.id}')" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold">✏️ Edit</button>
+            <button onclick="deleteEvent('${ev.id}')" class="px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold">🗑️</button>
+          </div>` : "";
+
+        return `
+          <div class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm card-hover flex flex-col justify-between">
+            <div>
+              <div class="relative">
+                ${bannerHtml}
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold shadow ${badgeClass}">
+                  ${escapeHtml(ev.status)}
+                </span>
+                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                  ${escapeHtml(ev.category)}
+                </span>
+              </div>
+              <div class="p-5">
+                <div class="text-xs font-bold text-emerald-700 mb-1">🗓️ ${formatDateIndo(ev.date)} • ${escapeHtml(ev.time || "")}</div>
+                <h4 class="font-extrabold text-emerald-950 text-base leading-snug mb-2">${escapeHtml(ev.title)}</h4>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3">${escapeHtml(ev.description)}</p>
+                <div class="space-y-1 text-xs text-emerald-900 bg-emerald-50/70 p-3 rounded-2xl">
+                  <div><strong>📍 Lokasi:</strong> ${escapeHtml(ev.location)}</div>
+                  ${ev.speaker ? `<div><strong>🎙️ Pemateri:</strong> ${escapeHtml(ev.speaker)}</div>` : ""}
+                </div>
+              </div>
+            </div>
+            <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-2">
+              <button onclick="copyEventWhatsApp('${ev.id}')" class="px-3.5 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-white text-xs font-extrabold transition flex items-center gap-1.5">
+                <span>📲</span>
+                <span>Salin Info WA</span>
+              </button>
+              ${adminActions}
+            </div>
+          </div>
+        `;
+      }).join("");
+    };
+
+    // Tab Navigation
+    window.switchTab = function(tabName) {
+      ["anggota", "kegiatan", "admin"].forEach(name => {
+        const sec = document.getElementById("section-" + name);
+        const btn = document.getElementById("tabBtn-" + name);
+        if (name === tabName) {
+          sec.classList.remove("hidden");
+          btn.classList.remove("tab-inactive");
+          btn.classList.add("tab-active");
+        } else {
+          sec.classList.add("hidden");
+          btn.classList.remove("tab-active");
+          btn.classList.add("tab-inactive");
+        }
+      });
+    };
+
+    window.jumpToSecuritySettings = function() {
+      switchTab("admin");
+      setTimeout(() => {
+        const el = document.getElementById("securitySettingsCard");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+    };
+
+    // Modals
+    window.openLoginModal = function() {
+      document.getElementById("loginModal").classList.remove("hidden");
+    };
+    window.closeModal = function(id) {
+      document.getElementById(id).classList.add("hidden");
+    };
+
+    window.switchAuthTab = function(mode) {
+      const loginForm = document.getElementById("loginForm");
+      const regForm = document.getElementById("registerForm");
+      const tabL = document.getElementById("authTabLogin");
+      const tabR = document.getElementById("authTabRegister");
+      if (mode === "login") {
+        loginForm.classList.remove("hidden");
+        regForm.classList.add("hidden");
+        tabL.className = "py-3 bg-emerald-50 text-emerald-900 border-b-2 border-emerald-700";
+        tabR.className = "py-3 text-slate-500 hover:text-emerald-800";
+      } else {
+        loginForm.classList.add("hidden");
+        regForm.classList.remove("hidden");
+        tabR.className = "py-3 bg-emerald-50 text-emerald-900 border-b-2 border-emerald-700";
+        tabL.className = "py-3 text-slate-500 hover:text-emerald-800";
+      }
+    };
+
+    // Admin Login & Registration
+    window.handleAdminLogin = function(e) {
+      e.preventDefault();
+      const userVal = document.getElementById("loginUsername").value.trim().toLowerCase();
+      const passVal = document.getElementById("loginPassword").value;
+
+      const admins = appState.admins || DEFAULT_STATE.admins;
+      const found = admins.find(a =>
+        (a.username.toLowerCase() === userVal || (userVal === "admin@ikadiprabubarat.or.id" && a.username.toLowerCase() === "admin")) &&
+        a.password === passVal
+      );
+
+      if (!found) {
+        showToast("Username atau kata sandi salah!", "error");
+        return;
+      }
+
+      currentAdmin = { username: found.username, displayName: found.displayName };
+      localStorage.setItem(SESSION_KEY, JSON.stringify(currentAdmin));
+      closeModal("loginModal");
+      updateAdminUIState();
+      switchTab("admin");
+      showToast("Selamat datang, " + currentAdmin.displayName + "!", "success");
+    };
+
+    window.fillAndSubmitDemoAdmin = function() {
+      const primaryAdmin = (appState.admins && appState.admins[0]) || { username: "admin", password: "ikadiprabubarat2026" };
+      document.getElementById("loginUsername").value = primaryAdmin.username;
+      document.getElementById("loginPassword").value = primaryAdmin.password;
+      handleAdminLogin(new Event("submit"));
+    };
+
+    window.handleRegisterAdmin = async function(e) {
+      e.preventDefault();
+      const displayName = document.getElementById("regDisplayName").value.trim();
+      const username = document.getElementById("regUsername").value.trim().toLowerCase().replace(/\s+/g, "");
+      const password = document.getElementById("regPassword").value;
+      const authCode = document.getElementById("regAuthCode").value.trim();
+
+      if (authCode !== (appState.authCode || "IKADI-PRABUBARAT-2026")) {
+        showToast("Kode Otorisasi Cabang tidak valid!", "error");
+        return;
+      }
+      if ((appState.admins || []).some(a => a.username.toLowerCase() === username)) {
+        showToast("Username sudah digunakan pengurus lain!", "error");
+        return;
+      }
+
+      const newAdmin = { username, password, displayName, updatedAt: new Date().toISOString() };
+      appState.admins = [...(appState.admins || []), newAdmin];
+      currentAdmin = { username, displayName };
+      localStorage.setItem(SESSION_KEY, JSON.stringify(currentAdmin));
+      closeModal("loginModal");
+      await persistState("Akun pengurus baru berhasil didaftarkan!");
+      switchTab("admin");
+    };
+
+    window.logoutAdmin = function() {
+      currentAdmin = null;
+      localStorage.removeItem(SESSION_KEY);
+      sessionStorage.removeItem(SESSION_KEY);
+      updateAdminUIState();
+      showToast("Anda telah keluar dari mode Admin.", "info");
+    };
+
+    // Security Settings: Change Username & Password
+    window.handleUpdateUsername = async function(e) {
+      e.preventDefault();
+      if (!currentAdmin) return;
+      const newUsername = document.getElementById("newUsernameInput").value.trim().toLowerCase().replace(/\s+/g, "");
+      const newDisplay = document.getElementById("newDisplayNameInput").value.trim();
+      const confirmPass = document.getElementById("confirmPassForUser").value;
+
+      const idx = (appState.admins || []).findIndex(a => a.username.toLowerCase() === currentAdmin.username.toLowerCase());
+      if (idx === -1 || appState.admins[idx].password !== confirmPass) {
+        showToast("Konfirmasi kata sandi saat ini tidak cocok!", "error");
+        return;
+      }
+      if (newUsername !== currentAdmin.username.toLowerCase() && appState.admins.some(a => a.username.toLowerCase() === newUsername)) {
+        showToast("Username tersebut sudah dipakai akun lain!", "error");
+        return;
+      }
+
+      appState.admins[idx].username = newUsername;
+      appState.admins[idx].displayName = newDisplay;
+      appState.admins[idx].updatedAt = new Date().toISOString();
+
+      currentAdmin = { username: newUsername, displayName: newDisplay };
+      localStorage.setItem(SESSION_KEY, JSON.stringify(currentAdmin));
+      e.target.reset();
+      await persistState("Username & nama tampilan admin berhasil diperbarui!");
+    };
+
+    window.evaluatePasswordStrength = function(pw) {
+      const bar = document.getElementById("strengthBar");
+      const label = document.getElementById("strengthLabel");
+      const hasLen = pw.length >= 8;
+      const hasCase = /[a-z]/.test(pw) && /[A-Z]/.test(pw);
+      const hasNum = /\d/.test(pw);
+      const hasSym = /[^A-Za-z0-9]/.test(pw);
+
+      document.getElementById("chkLen").textContent = (hasLen ? "✅ " : "○ ") + "Minimal 8 karakter";
+      document.getElementById("chkCase").textContent = (hasCase ? "✅ " : "○ ") + "Huruf besar & kecil";
+      document.getElementById("chkNum").textContent = (hasNum ? "✅ " : "○ ") + "Mengandung angka";
+      document.getElementById("chkSym").textContent = (hasSym ? "✅ " : "○ ") + "Simbol (@#$! dll)";
+
+      const score = [hasLen, hasCase, hasNum, hasSym].filter(Boolean).length;
+      const widths = ["0%", "25%", "50%", "75%", "100%"];
+      const colors = ["bg-slate-300", "bg-rose-500", "bg-amber-500", "bg-emerald-500", "bg-emerald-700"];
+      const texts = ["Belum diisi", "Lemah", "Cukup", "Kuat", "Sangat Kuat"];
+
+      bar.style.width = widths[score];
+      bar.className = "h-full transition-all duration-300 " + colors[score];
+      label.textContent = texts[score];
+    };
+
+    window.handleUpdatePassword = async function(e) {
+      e.preventDefault();
+      if (!currentAdmin) return;
+      const oldPw = document.getElementById("oldPasswordInput").value;
+      const newPw = document.getElementById("newPasswordInput").value;
+      const confPw = document.getElementById("confirmNewPasswordInput").value;
+
+      const idx = (appState.admins || []).findIndex(a => a.username.toLowerCase() === currentAdmin.username.toLowerCase());
+      if (idx === -1 || appState.admins[idx].password !== oldPw) {
+        showToast("Kata sandi lama tidak sesuai!", "error");
+        return;
+      }
+      if (newPw.length < 8) {
+        showToast("Kata sandi baru minimal 8 karakter!", "error");
+        return;
+      }
+      if (newPw !== confPw) {
+        showToast("Konfirmasi kata sandi baru tidak cocok!", "error");
+        return;
+      }
+
+      appState.admins[idx].password = newPw;
+      appState.admins[idx].updatedAt = new Date().toISOString();
+      e.target.reset();
+      evaluatePasswordStrength("");
+      await persistState("Kata sandi admin berhasil diperbarui & diamankan!");
+    };
+
+    // CRUD Members
+    window.handleAddMember = async function(e) {
+      e.preventDefault();
+      const newMember = {
+        id: "m_" + Date.now(),
+        name: document.getElementById("mName").value.trim(),
+        role: document.getElementById("mRole").value.trim(),
+        division: document.getElementById("mDivision").value,
+        kelurahan: document.getElementById("mKelurahan").value,
+        phone: document.getElementById("mPhone").value.trim(),
+        specialty: document.getElementById("mSpecialty").value.trim(),
+        photo: document.getElementById("mPhotoData").value || ""
+      };
+      appState.members = [newMember, ...(appState.members || [])];
+      e.target.reset();
+      clearImageField("mPhotoInput", "mPhotoPreview", "mPhotoData");
+      await persistState("Pengurus/Dai baru berhasil dipublikasikan!");
+      switchTab("anggota");
+    };
+
+    window.openEditMemberModal = function(id) {
+      const m = (appState.members || []).find(item => item.id === id);
+      if (!m) return;
+      document.getElementById("editMId").value = m.id;
+      document.getElementById("editMName").value = m.name;
+      document.getElementById("editMRole").value = m.role;
+      document.getElementById("editMDivision").value = m.division;
+      document.getElementById("editMKelurahan").value = m.kelurahan;
+      document.getElementById("editMPhone").value = m.phone || "";
+      document.getElementById("editMSpecialty").value = m.specialty || "";
+      document.getElementById("editMPhotoData").value = m.photo || "";
+      const prev = document.getElementById("editMPhotoPreview");
+      if (m.photo) {
+        prev.src = m.photo;
+        prev.classList.remove("hidden");
+      } else {
+        prev.classList.add("hidden");
+      }
+      document.getElementById("editMemberModal").classList.remove("hidden");
+    };
+
+    window.handleUpdateMember = async function(e) {
+      e.preventDefault();
+      const id = document.getElementById("editMId").value;
+      const idx = (appState.members || []).findIndex(item => item.id === id);
+      if (idx === -1) return;
+
+      appState.members[idx] = {
+        ...appState.members[idx],
+        name: document.getElementById("editMName").value.trim(),
+        role: document.getElementById("editMRole").value.trim(),
+        division: document.getElementById("editMDivision").value,
+        kelurahan: document.getElementById("editMKelurahan").value,
+        phone: document.getElementById("editMPhone").value.trim(),
+        specialty: document.getElementById("editMSpecialty").value.trim(),
+        photo: document.getElementById("editMPhotoData").value || ""
+      };
+      closeModal("editMemberModal");
+      await persistState("Data pengurus/dai berhasil diperbarui!");
+    };
+
+    window.deleteMember = async function(id) {
+      if (!confirm("Hapus data pengurus/dai ini dari direktori?")) return;
+      appState.members = (appState.members || []).filter(m => m.id !== id);
+      await persistState("Data anggota berhasil dihapus.");
+    };
+
+    // CRUD Events
+    window.handleAddEvent = async function(e) {
+      e.preventDefault();
+      const newEv = {
+        id: "e_" + Date.now(),
+        title: document.getElementById("eTitle").value.trim(),
+        category: document.getElementById("eCategory").value,
+        date: document.getElementById("eDate").value,
+        time: document.getElementById("eTime").value.trim(),
+        location: document.getElementById("eLocation").value.trim(),
+        status: document.getElementById("eStatus").value,
+        speaker: document.getElementById("eSpeaker").value.trim(),
+        description: document.getElementById("eDesc").value.trim(),
+        photo: document.getElementById("ePhotoData").value || ""
+      };
+      appState.events = [newEv, ...(appState.events || [])];
+      e.target.reset();
+      clearImageField("ePhotoInput", "ePhotoPreview", "ePhotoData");
+      await persistState("Agenda kegiatan baru berhasil dipublikasikan!");
+      switchTab("kegiatan");
+    };
+
+    window.openEditEventModal = function(id) {
+      const ev = (appState.events || []).find(item => item.id === id);
+      if (!ev) return;
+      document.getElementById("editEId").value = ev.id;
+      document.getElementById("editETitle").value = ev.title;
+      document.getElementById("editECategory").value = ev.category;
+      document.getElementById("editEDate").value = ev.date;
+      document.getElementById("editETime").value = ev.time;
+      document.getElementById("editELocation").value = ev.location;
+      document.getElementById("editEStatus").value = ev.status;
+      document.getElementById("editESpeaker").value = ev.speaker || "";
+      document.getElementById("editEDesc").value = ev.description;
+      document.getElementById("editEPhotoData").value = ev.photo || "";
+      const prev = document.getElementById("editEPhotoPreview");
+      if (ev.photo) {
+        prev.src = ev.photo;
+        prev.classList.remove("hidden");
+      } else {
+        prev.classList.add("hidden");
+      }
+      document.getElementById("editEventModal").classList.remove("hidden");
+    };
+
+    window.handleUpdateEvent = async function(e) {
+      e.preventDefault();
+      const id = document.getElementById("editEId").value;
+      const idx = (appState.events || []).findIndex(item => item.id === id);
+      if (idx === -1) return;
+
+      appState.events[idx] = {
+        ...appState.events[idx],
+        title: document.getElementById("editETitle").value.trim(),
+        category: document.getElementById("editECategory").value,
+        date: document.getElementById("editEDate").value,
+        time: document.getElementById("editETime").value.trim(),
+        location: document.getElementById("editELocation").value.trim(),
+        status: document.getElementById("editEStatus").value,
+        speaker: document.getElementById("editESpeaker").value.trim(),
+        description: document.getElementById("editEDesc").value.trim(),
+        photo: document.getElementById("editEPhotoData").value || ""
+      };
+      closeModal("editEventModal");
+      await persistState("Agenda kegiatan berhasil diperbarui!");
+    };
+
+    window.deleteEvent = async function(id) {
+      if (!confirm("Hapus agenda kegiatan ini?")) return;
+      appState.events = (appState.events || []).filter(ev => ev.id !== id);
+      await persistState("Agenda kegiatan berhasil dihapus.");
+    };
+
+    // Edit Profile & Logo
+    window.openEditProfileModal = function() {
+      document.getElementById("profName").value = appState.profile.name;
+      document.getElementById("profSub").value = appState.profile.subtitle;
+      document.getElementById("profTagline").value = appState.profile.tagline;
+      document.getElementById("profDesc").value = appState.profile.description;
+      document.getElementById("profVisi").value = appState.profile.visi;
+      document.getElementById("profMisi").value = appState.profile.misi;
+      document.getElementById("profLogoData").value = appState.profile.customLogo || "";
+      const prev = document.getElementById("profLogoPreview");
+      if (appState.profile.customLogo) {
+        prev.src = appState.profile.customLogo;
+        prev.classList.remove("hidden");
+      } else {
+        prev.classList.add("hidden");
+      }
+      document.getElementById("editProfileModal").classList.remove("hidden");
+    };
+
+    window.resetDefaultLogo = function() {
+      document.getElementById("profLogoData").value = "";
+      document.getElementById("profLogoInput").value = "";
+      document.getElementById("profLogoPreview").classList.add("hidden");
+      showToast("Logo dikembalikan ke Logo Resmi IKADI standar.", "info");
+    };
+
+    window.handleSaveProfile = async function(e) {
+      e.preventDefault();
+      appState.profile = {
+        name: document.getElementById("profName").value.trim(),
+        subtitle: document.getElementById("profSub").value.trim(),
+        tagline: document.getElementById("profTagline").value.trim(),
+        description: document.getElementById("profDesc").value.trim(),
+        visi: document.getElementById("profVisi").value.trim(),
+        misi: document.getElementById("profMisi").value.trim(),
+        customLogo: document.getElementById("profLogoData").value || ""
+      };
+      closeModal("editProfileModal");
+      await persistState("Profil & identitas IKADI berhasil diperbarui!");
+    };
+
+    // Image Compression Helper via Canvas
+    window.previewCompressedImage = function(inputEl, previewId, hiddenInputId, maxW, maxH) {
+      const file = inputEl.files && inputEl.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        const img = new Image();
+        img.onload = function() {
+          let w = img.width;
+          let h = img.height;
+          if (w > maxW || h > maxH) {
+            const ratio = Math.min(maxW / w, maxH / h);
+            w = Math.round(w * ratio);
+            h = Math.round(h * ratio);
+          }
+          const canvas = document.createElement("canvas");
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, w, h);
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.78);
+          document.getElementById(hiddenInputId).value = dataUrl;
+          const prevEl = document.getElementById(previewId);
+          prevEl.src = dataUrl;
+          prevEl.classList.remove("hidden");
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.clearImageField = function(inputId, previewId, hiddenId) {
+      document.getElementById(inputId).value = "";
+      document.getElementById(hiddenId).value = "";
+      const prev = document.getElementById(previewId);
+      prev.src = "";
+      prev.classList.add("hidden");
+    };
+
+    // Share, QR Code & Standalone HTML Export
+    window.openShareModal = function() {
+      const sharePayload = {
+        profile: appState.profile,
+        members: (appState.members || []).map(m => ({ ...m, photo: "" })), // keep URL compact
+        events: (appState.events || []).map(ev => ({ ...ev, photo: "" })),
+        updatedAt: appState.updatedAt
+      };
+      const compressed = LZString.compressToEncodedURIComponent(JSON.stringify(sharePayload));
+      const baseUrl = window.location.href.split("#")[0];
+      const fullUrl = baseUrl + "#web=" + compressed;
+      document.getElementById("generatedShareUrl").value = fullUrl;
+
+      const qrBox = document.getElementById("qrcodeContainer");
+      qrBox.innerHTML = "";
+      new QRCode(qrBox, {
+        text: fullUrl.length < 1800 ? fullUrl : baseUrl,
+        width: 148,
+        height: 148,
+        colorDark: "#063729",
+        colorLight: "#ffffff"
+      });
+
+      document.getElementById("shareModal").classList.remove("hidden");
+    };
+
+    window.copyShareUrl = function() {
+      const input = document.getElementById("generatedShareUrl");
+      input.select();
+      navigator.clipboard.writeText(input.value);
+      showToast("Tautan web portal berhasil disalin!", "success");
+    };
+
+    window.downloadQrPng = function() {
+      const canvas = document.querySelector("#qrcodeContainer canvas");
+      if (!canvas) return;
+      const link = document.createElement("a");
+      link.download = "QR-Portal-IKADI-Prabumulih-Barat.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+
+    window.shareToWhatsApp = function() {
+      const url = document.getElementById("generatedShareUrl").value;
+      const text = `*PORTAL RESMI ${appState.profile.name.toUpperCase()}*
+_${appState.profile.tagline}_
+
+Lihat direktori pengurus/dai serta jadwal kajian & kegiatan terbaru melalui tautan resmi berikut:
+${url}`;
+      window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+    };
+
+    window.copyEventWhatsApp = function(id) {
+      const ev = (appState.events || []).find(item => item.id === id);
+      if (!ev) return;
+      const msg = `*UNDANGAN & INFO KEGIATAN*
+*${appState.profile.name}*
+
+📌 *${ev.title}*
+🗓️ Tanggal: ${formatDateIndo(ev.date)}
+⏰ Waktu: ${ev.time}
+📍 Lokasi: ${ev.location}
+🎙️ Pemateri: ${ev.speaker || "-"}
+
+${ev.description}
+
+_Barakallahu fiikum — Bidang Dakwah IKADI Prabumulih Barat_`;
+      navigator.clipboard.writeText(msg);
+      showToast("Format pengumuman WhatsApp berhasil disalin!", "success");
+    };
+
+    window.downloadStandaloneHtml = function() {
+      const cloneDoc = document.documentElement.cloneNode(true);
+      // Inject current state directly into standalone HTML so all photos & data are preserved offline/online
+      const stateScript = document.createElement("script");
+      stateScript.textContent = `window.__EMBEDDED_IKADI_STATE__ = ${JSON.stringify(appState)};`;
+      cloneDoc.querySelector("head").prepend(stateScript);
+
+      const htmlBlob = new Blob(["<!DOCTYPE html>
+" + cloneDoc.outerHTML], { type: "text/html;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(htmlBlob);
+      a.download = "index.html";
+      a.click();
+      showToast("File index.html mandiri siap di-hosting online!", "success");
+    };
+
+    // Cloud Settings Modal
+    window.openCloudSettingsModal = function() {
+      document.getElementById("cloudSettingsModal").classList.remove("hidden");
+    };
+
+    window.saveCustomFirebaseConfig = function() {
+      const raw = document.getElementById("firebaseConfigInput").value.trim();
+      try {
+        const parsed = JSON.parse(raw);
+        if (!parsed.apiKey || !parsed.projectId) throw new Error("Invalid");
+        localStorage.setItem(CUSTOM_FB_KEY, JSON.stringify(parsed));
+        showToast("Konfigurasi Firebase disimpan! Memuat ulang...", "success");
+        setTimeout(() => location.reload(), 900);
+      } catch (e) {
+        showToast("Format JSON firebaseConfig tidak valid!", "error");
+      }
+    };
+
+    window.syncLocalToCloudNow = async function() {
+      await persistState("Sinkronisasi manual selesai!");
+      closeModal("cloudSettingsModal");
+    };
+
+    // Utilities
+    window.toggleInputVisibility = function(id) {
+      const inp = document.getElementById(id);
+      inp.type = inp.type === "password" ? "text" : "password";
+    };
+
+    function formatDateIndo(dateStr) {
+      if (!dateStr) return "-";
+      const d = new Date(dateStr + "T00:00:00");
+      if (isNaN(d.getTime())) return dateStr;
+      return d.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function showToast(msg, type = "success") {
+      const container = document.getElementById("toastContainer");
+      const colors = {
+        success: "bg-emerald-900 text-white border-emerald-500",
+        error: "bg-rose-700 text-white border-rose-400",
+        warning: "bg-amber-500 text-emerald-950 border-amber-300",
+        info: "bg-slate-800 text-white border-slate-600"
+      };
+      const el = document.createElement("div");
+      el.className = `pointer-events-auto px-4 py-3 rounded-2xl shadow-xl border text-xs font-bold flex items-center gap-2 transition-all duration-300 ${colors[type] || colors.info}`;
+      el.textContent = msg;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = "0";
+        setTimeout(() => el.remove(), 300);
+      }, 3200);
+    }
+
+    // Boot Application
+    if (window.__EMBEDDED_IKADI_STATE__) {
+      appState = { ...structuredClone(DEFAULT_STATE), ...window.__EMBEDDED_IKADI_STATE__ };
+    } else {
+      loadInitialLocalState();
+    }
+    renderAll();
+    initCloudSync();
+  </script>
+</body>
+</html>
